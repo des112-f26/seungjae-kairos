@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kairos — a silent app for flexible time · DES 112</title>
+<meta name="description" content="Kairos stays silent while your phone is away, then asks if it was a moment worth keeping. A DES 112 project by Seungjae Chang.">
+<link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="app/fonts/fonts.css">
+<style>
+:root{--sand:#e6dfc8;--ink:#1f241a;--olive:#4c5a2e;--brass:#b8963e;--gold:#d4b26a;--muted:#4e5144;--dark:#1c2118}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,system-ui,sans-serif;color:var(--ink);background:var(--sand);line-height:1.6}
+a{color:var(--olive)}a:hover{color:var(--ink)}
+.wrap{max-width:1100px;margin:0 auto;padding:0 24px}
+.stencil{font-family:'Stardos Stencil',Impact,sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.01em;line-height:1.05}
+.mono{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+header.hero{background:repeating-radial-gradient(circle at 90% 10%,rgba(230,223,200,.06) 0 1px,transparent 1px 28px),linear-gradient(165deg,#2c3824 0%,#1c2118 60%,#33402a 100%);color:var(--sand);padding:28px 0 72px}
+header nav{display:flex;flex-wrap:wrap;gap:6px 22px;align-items:center;margin-bottom:64px}
+header nav .brand{font-family:'Stardos Stencil',Impact,sans-serif;font-size:24px;color:var(--gold);margin-right:auto;text-decoration:none}
+header nav a{color:var(--sand);text-decoration:none;font-size:14px;padding:8px 0}
+header nav a:hover{color:var(--gold)}
+.hero-grid{display:flex;flex-wrap:wrap;gap:48px;align-items:center}
+.hero-copy{flex:1 1 420px;min-width:0}
+.hero-copy h1{font-size:clamp(40px,6vw,68px);margin:12px 0 18px}
+.hero-copy p{font-size:18px;max-width:560px;color:rgba(230,223,200,.9)}
+.hero-copy .mono{color:var(--gold)}
+.btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.btn{display:inline-flex;align-items:center;min-height:50px;padding:0 22px;border-radius:6px;font-weight:600;text-decoration:none}
+.btn.primary{background:var(--sand);color:var(--ink)}
+.btn.outline{border:1px solid rgba(230,223,200,.45);color:var(--sand)}
+.btn.primary:hover{background:#fff}.btn.outline:hover{border-color:var(--gold);color:var(--gold)}
+.hero-shot{flex:0 1 300px;margin:0 auto}
+.hero-shot img{width:100%;border-radius:32px;box-shadow:0 0 0 8px #2a3322,0 30px 70px rgba(0,0,0,.5);display:block}
+section{padding:72px 0;border-bottom:1px solid rgba(31,36,26,.12)}
+section h2{font-size:clamp(30px,4vw,42px);margin:8px 0 20px}
+.lead{font-size:18px;max-width:760px}
+.story{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:28px;margin-top:28px}
+.story p{margin:0}
+.card{background:rgba(31,36,26,.06);border-radius:8px;padding:22px}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:22px;margin-top:32px}
+.steps figure{margin:0}
+.steps img,.flow img{width:100%;border-radius:18px;display:block;box-shadow:0 8px 24px rgba(31,36,26,.18)}
+figcaption{margin-top:12px;font-size:14px;color:var(--muted)}
+figcaption b{display:block;color:var(--ink);font-size:15px}
+.video{margin-top:28px;display:flex;flex-wrap:wrap;gap:28px;align-items:flex-start}
+.video video{width:min(100%,360px);border-radius:18px;background:#000;box-shadow:0 10px 30px rgba(31,36,26,.25)}
+.video .card{flex:1 1 320px}
+.flow-group{margin-top:40px}
+.flow-group h3{font-family:'Stardos Stencil',Impact,sans-serif;font-size:22px;margin:0 0 14px;text-transform:uppercase}
+.flow{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:18px}
+.flow a{text-decoration:none;color:inherit}
+.flow figcaption{font-size:13px}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:22px;margin-top:28px}
+.cols h3{margin:0 0 8px;font-size:17px}
+.cols p,.cols ul{margin:0;font-size:15px}
+ul{padding-left:20px}
+li{margin:4px 0}
+.dark{background:linear-gradient(165deg,#2c3824 0%,#1c2118 70%);color:var(--sand)}
+.dark .mono{color:var(--gold)}.dark a{color:var(--gold)}
+.dark .card{background:rgba(230,223,200,.07)}
+footer{padding:40px 0 60px;font-size:14px;color:var(--muted)}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    <nav aria-label="Main">
+      <a class="brand" href="#">KAIROS</a>
+      <a href="#story">Flexible time</a>
+      <a href="#how">How it works</a>
+      <a href="#flow">All screens</a>
+      <a href="#process">Process &amp; AI</a>
+      <a href="https://github.com/des112-f26/des112-kairos">GitHub</a>
+    </nav>
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <p class="mono">DES 112 · UX/UI/AI · Final project · Seungjae Chang</p>
+        <h1 class="stencil">Enjoy the moment now and check the time later</h1>
+        <p>Kairos is a silent phone companion for soldiers. It stays completely quiet while your phone is put away, and when you come back it asks whether that time was worth keeping. You won't see a clock until the end of the day, when you finally find out how long it really was.</p>
+        <div class="btns">
+          <a class="btn primary" href="app/">Try the demo</a>
+          <a class="btn outline" href="#video">Watch the flow</a>
+        </div>
+      </div>
+      <div class="hero-shot"><img src="assets/screens/LockNote.png" alt="Kairos lock screen notification: You were away for a while. Looked like time with your unit. If it mattered, keep it before it fades."></div>
+    </div>
+  </div>
+</header>
+
+<main>
+<section id="story">
+  <div class="wrap">
+    <p class="mono">The idea</p>
+    <h2 class="stencil">Flexible time</h2>
+    <p class="lead">I was thinking about flexible time, the idea that the same hour can feel long or short depending on the moment. For me, time was most flexible when I served as a soldier in Korea.</p>
+    <div class="story">
+      <div class="card"><p class="mono">Night watch</p><p>Standing guard alone in the dark, I checked my Casio watch almost every minute, and every minute felt endless. When I tried counting seconds in my head, I was always sure more time had gone by than really had.</p></div>
+      <div class="card"><p class="mono">Dinner with the squad</p><p>Then there were the moments that flew by without me even noticing, like dinner with my squad after drills. Those were the moments that actually mattered, and they disappeared without a trace.</p></div>
+      <div class="card"><p class="mono">So, Kairos</p><p>In Greek, <i>chronos</i> is clock time and <i>kairos</i> is the right moment. Kairos protects your time away from the phone, helps you keep the moments that mattered, and only shows the clock afterward.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="how">
+  <div class="wrap">
+    <p class="mono">How it works</p>
+    <h2 class="stencil">Four quiet steps</h2>
+    <div class="steps">
+      <figure><img src="assets/screens/Nudge.png" alt="Note screen: You were away for a while." loading="lazy"><figcaption><b>1 · A silent note</b>No sound, no buzz. It only shows up when you pick your phone back up.</figcaption></figure>
+      <figure><img src="assets/screens/Keep.png" alt="How did it feel screen with a slider from a blink to a long while." loading="lazy"><figcaption><b>2 · Keep how it felt</b>A few words, one word, and a slider from "a blink" to "a long while". No clock anywhere.</figcaption></figure>
+      <figure><img src="assets/screens/Sealed.png" alt="Envelope stamped KEPT, opens tonight." loading="lazy"><figcaption><b>3 · Sealed until tonight</b>The moment is sealed like a letter, so you can get back to your day.</figcaption></figure>
+      <figure><img src="assets/screens/UnitMoment.png" alt="Same dinner, four different lengths: bars comparing how long it felt to each squadmate." loading="lazy"><figcaption><b>4 · Felt vs. real</b>Tonight you see when it happened and how long it really was, and how differently your squad felt the same time.</figcaption></figure>
+    </div>
+    <div class="video" id="video">
+      <video src="assets/kairos-flow.mp4" controls muted playsinline preload="metadata" poster="assets/screens/index.png"></video>
+      <div class="card">
+        <p class="mono">Screen recording</p>
+        <p>A walkthrough of the main flow: set up, the lock screen note, keeping a moment, the sealed letter, tonight's reveal, and comparing with your unit.</p>
+        <p style="margin-top:14px"><a href="app/">Open the clickable demo →</a> Every button works, and there are 31 screens to explore.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="flow">
+  <div class="wrap">
+    <p class="mono">User flow</p>
+    <h2 class="stencil">All 31 screens</h2>
+    <p class="lead">The top row of each group is the main flow. The screens after it are where each choice branches off. Click any screen to open it in the demo.</p>
+    <div class="flow-group"><h3>0–1 · Welcome &amp; set up</h3><div class="flow">
+      <a href="app/index.html"><figure><img src="assets/screens/index.png" alt="Welcome screen: a watch face with no hands" loading="lazy"><figcaption><b>0 Welcome</b>No hands, on purpose</figcaption></figure></a>
+      <a href="app/HowItWorks.html"><figure><img src="assets/screens/HowItWorks.png" alt="How it works" loading="lazy"><figcaption><b>0a How it works</b>Three steps</figcaption></figure></a>
+      <a href="app/Main.html"><figure><img src="assets/screens/Main.png" alt="Set up screen" loading="lazy"><figcaption><b>1 Set up</b>Choose when to be asked</figcaption></figure></a>
+      <a href="app/SilentInfo.html"><figure><img src="assets/screens/SilentInfo.png" alt="Why always silent" loading="lazy"><figcaption><b>1a Why silent</b>The one setting you can't change</figcaption></figure></a>
+      <a href="app/PhoneHours.html"><figure><img src="assets/screens/PhoneHours.png" alt="Phone hours" loading="lazy"><figcaption><b>1b Phone hours</b>When your phone comes back</figcaption></figure></a>
+      <a href="app/ProfileTag.html"><figure><img src="assets/screens/ProfileTag.png" alt="Make your tag: name, rank, unit and badge color with a dog tag preview" loading="lazy"><figcaption><b>1c Your tag</b>Name, rank, unit</figcaption></figure></a>
+      <a href="app/ProfileDates.html"><figure><img src="assets/screens/ProfileDates.png" alt="Service dates with a D-day preview" loading="lazy"><figcaption><b>1d Service dates</b>Sets your D-day</figcaption></figure></a>
+    </div></div>
+    <div class="flow-group"><h3>2 · Home &amp; unit</h3><div class="flow">
+      <a href="app/Home.html"><figure><img src="assets/screens/Home.png" alt="Home" loading="lazy"><figcaption><b>2 Home</b>Go live your day</figcaption></figure></a>
+      <a href="app/Locked.html"><figure><img src="assets/screens/Locked.png" alt="Tonight is sealed" loading="lazy"><figcaption><b>2a Sealed</b>Tonight opens later</figcaption></figure></a>
+      <a href="app/Settings.html"><figure><img src="assets/screens/Settings.png" alt="Settings" loading="lazy"><figcaption><b>2b Settings</b></figcaption></figure></a>
+      <a href="app/Unit.html"><figure><img src="assets/screens/Unit.png" alt="Unit board" loading="lazy"><figcaption><b>2c Unit board</b>Your squad only</figcaption></figure></a>
+      <a href="app/Thread.html"><figure><img src="assets/screens/Thread.png" alt="A post with comments from the squad" loading="lazy"><figcaption><b>2d Post</b>Comments from the squad</figcaption></figure></a>
+      <a href="app/AddSquad.html"><figure><img src="assets/screens/AddSquad.png" alt="Add a squadmate with a dog tag QR code" loading="lazy"><figcaption><b>2e Add squadmate</b>Dog tag QR</figcaption></figure></a>
+      <a href="app/Profile.html"><figure><img src="assets/screens/Profile.png" alt="Squadmate profile" loading="lazy"><figcaption><b>2f Profile</b>How time feels to them</figcaption></figure></a>
+      <a href="app/Service.html"><figure><img src="assets/screens/Service.png" alt="My service: D-214, served by the calendar vs. by how it felt" loading="lazy"><figcaption><b>2g Me</b>D-day, felt vs. real</figcaption></figure></a>
+    </div></div>
+    <div class="flow-group"><h3>3–4 · The note</h3><div class="flow">
+      <a href="app/LockNote.html"><figure><img src="assets/screens/LockNote.png" alt="Lock screen notification" loading="lazy"><figcaption><b>3 Lock screen</b>Delivered quietly</figcaption></figure></a>
+      <a href="app/LockOptions.html"><figure><img src="assets/screens/LockOptions.png" alt="Lock screen options" loading="lazy"><figcaption><b>3a Options</b>Press and hold</figcaption></figure></a>
+      <a href="app/Nudge.html"><figure><img src="assets/screens/Nudge.png" alt="The note, opened" loading="lazy"><figcaption><b>4 Note, opened</b></figcaption></figure></a>
+      <a href="app/Later.html"><figure><img src="assets/screens/Later.png" alt="Saved for tonight" loading="lazy"><figcaption><b>4a Save for tonight</b></figcaption></figure></a>
+      <a href="app/NotMoment.html"><figure><img src="assets/screens/NotMoment.png" alt="Not a moment" loading="lazy"><figcaption><b>4b Not a moment</b></figcaption></figure></a>
+    </div></div>
+    <div class="flow-group"><h3>5–6 · Keeping it</h3><div class="flow">
+      <a href="app/Moment.html"><figure><img src="assets/screens/Moment.png" alt="What was it?" loading="lazy"><figcaption><b>5 What was it?</b></figcaption></figure></a>
+      <a href="app/WhoWasThere.html"><figure><img src="assets/screens/WhoWasThere.png" alt="Tag your squad" loading="lazy"><figcaption><b>5a Tag your squad</b></figcaption></figure></a>
+      <a href="app/Keep.html"><figure><img src="assets/screens/Keep.png" alt="How did it feel?" loading="lazy"><figcaption><b>6 How did it feel?</b></figcaption></figure></a>
+      <a href="app/Photo.html"><figure><img src="assets/screens/Photo.png" alt="Add a photo" loading="lazy"><figcaption><b>6a Add a photo</b></figcaption></figure></a>
+      <a href="app/LetGo.html"><figure><img src="assets/screens/LetGo.png" alt="Let it go" loading="lazy"><figcaption><b>6b Let it go</b></figcaption></figure></a>
+      <a href="app/Sealed.html"><figure><img src="assets/screens/Sealed.png" alt="Kept and sealed" loading="lazy"><figcaption><b>6c Kept</b>Sealed like a letter</figcaption></figure></a>
+    </div></div>
+    <div class="flow-group"><h3>7 · Tonight</h3><div class="flow">
+      <a href="app/Kept.html"><figure><img src="assets/screens/Kept.png" alt="Tonight: here's when it happened" loading="lazy"><figcaption><b>7 Tonight</b>When it happened</figcaption></figure></a>
+      <a href="app/Detail.html"><figure><img src="assets/screens/Detail.png" alt="Moment detail" loading="lazy"><figcaption><b>7a Detail</b>Felt vs. actually</figcaption></figure></a>
+      <a href="app/Week.html"><figure><img src="assets/screens/Week.png" alt="This week" loading="lazy"><figcaption><b>7b This week</b></figcaption></figure></a>
+      <a href="app/UnitMoment.html"><figure><img src="assets/screens/UnitMoment.png" alt="Same dinner, four different lengths" loading="lazy"><figcaption><b>7c Compare</b>Same time, different lengths</figcaption></figure></a>
+      <a href="app/Unseal.html"><figure><img src="assets/screens/Unseal.png" alt="Tonight's letter is ready" loading="lazy"><figcaption><b>7d Tonight's letter</b>Opens when phones are out</figcaption></figure></a>
+    </div></div>
+  </div>
+</section>
+
+<section id="research">
+  <div class="wrap">
+    <p class="mono">Research</p>
+    <h2 class="stencil">What it builds on</h2>
+    <div class="cols">
+      <div class="card"><h3>Chronos vs. kairos</h3><p>Ancient Greek has two words for time: <i>chronos</i>, measured clock time, and <i>kairos</i>, the meaningful or "right" moment. The app is named after the second one.</p></div>
+      <div class="card"><h3>Monochronic &amp; polychronic time</h3><p>Anthropologist Edward T. Hall described cultures that schedule one thing at a time by the clock, and cultures that treat time as flexible and put people first. Military life is extremely monochronic; Kairos makes room for the other kind.</p></div>
+      <div class="card"><h3>Mind time vs. clock time</h3><p>Claudia Hammond's <i>Time Warped</i> explains how fear, boredom and waiting stretch time, and how we judge time differently looking forward than looking back (the "Holiday Paradox"). That's why Kairos asks first and reveals the clock later.</p></div>
+      <div class="card"><h3>Interviews</h3><p>Five people (a college friend, a roommate, someone at the gym, someone at a coffee shop and my mom) described time as deadlines, routine, progress, mood and memories. My own military experience became the core story.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="process" class="dark">
+  <div class="wrap">
+    <p class="mono">Process</p>
+    <h2 class="stencil">Iterations &amp; how I used AI</h2>
+    <div class="cols">
+      <div class="card"><h3>v1 · The Day Grows Back</h3><p>My first prototype was a number-free clock: a dial of grass, one blade per minute, mowed by a little gardener. It worked, but my instructor pushed me to research "flexible time" further and try a more different route.</p></div>
+      <div class="card"><h3>Three routes → Kairos</h3><p>I compared an elastic planner, a "kairos" app that only shows meaningful moments, and a shared flexible-time app. I picked the second, then reshaped it around my military story: silent while the phone is away, with the clock revealed at night.</p></div>
+      <div class="card"><h3>Classmate feedback</h3><ul><li>Use gradients and fill empty space → added topographic map textures and a sealed letter</li><li>Strengthen core features before adding more → cut voice notes and custom tags, and focused on "felt vs. real"</li><li>Try a social angle → a private unit board, dog-tag QR and squad profiles</li></ul></div>
+    </div>
+    <div class="cols">
+      <div class="card"><h3>How I used AI</h3><ul>
+        <li><b>Claude (Anthropic)</b> helped me put my moodboard and concept into words, write interview questions, and draft and edit my presentation scripts. The military story and the opinions in it are my own.</li>
+        <li>I designed the prototypes by prompting Claude in <b>Claude Design</b>, giving feedback screen by screen ("too many words", "make the grass look like grass", "military colors", "add a letter behind sealed").</li>
+        <li>Claude searched for research sources (Hall, Hammond, chronos/kairos), which I read and chose from.</li>
+        <li>Claude wrote the code that turns the design screens into this static demo, took the screenshots, recorded the walkthrough and set up this repository.</li>
+        <li>The direction was mine: the silent lock-screen note, sealing a moment until night, the soldier focus, and the squad features.</li>
+      </ul></div>
+      <div class="card"><h3>What I learned</h3><p>AI makes it fast to build a lot, but my instructor was right that speed isn't the point. The project only got interesting once I brought in something personal: counting minutes on night watch. The best prompts were specific reactions to what I saw, not requests for more features.</p></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><b>Kairos</b> · by Seungjae Chang · DES 112 UX/UI/AI, UC Davis, Fall 2026 · <a href="https://github.com/des112-f26/des112-kairos">Source on GitHub</a></p>
+    <p>Fonts: Stardos Stencil, IBM Plex Mono, Caveat and Inter (SIL Open Font License, via Fontsource). Squadmate names in the demo are made up. Prototype screens designed with Claude (Anthropic).</p>
+  </div>
+</footer>
+</body>
+</html>

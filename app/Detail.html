@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kairos — Moment detail</title>
+<link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>html{background:#11150f}
+body{margin:0;min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:24px 0;box-sizing:border-box;font-family:Inter,system-ui,sans-serif}
+.stage{position:relative;flex:none;width:calc(390px * var(--s, 1));height:calc(844px * var(--s, 1))}
+.phone{position:absolute;left:0;top:0;width:390px;height:844px;border-radius:44px;overflow:hidden;box-shadow:0 0 0 10px #2a3322,0 30px 80px rgba(0,0,0,.55);transform:scale(var(--s, 1));transform-origin:0 0}
+.demo-nav{display:flex;gap:18px;font:500 13px Inter,system-ui,sans-serif}
+.demo-nav a{color:#d4b26a;text-decoration:none;padding:10px 4px}
+.demo-nav a:hover{text-decoration:underline}
+@media (max-width:500px){body{padding:0;justify-content:flex-start;gap:0}.phone{border-radius:0;box-shadow:none}.demo-nav{padding:8px 0 16px}}
+
+body{margin:0}
+a{color:#e6dfc8}a:hover{opacity:.8}
+input[type=range]{accent-color:#6b7a3f}
+
+</style>
+<script>(function(){function fit(){var m=window.innerWidth<=500;var w=window.innerWidth-(m?0:60),h=window.innerHeight-(m?0:110);var s=m?w/390:Math.min(1,w/390,h/844);document.documentElement.style.setProperty('--s',s.toFixed(4))}fit();window.addEventListener('resize',fit)})();</script>
+</head>
+<body>
+<div class="stage">
+<main class="phone">
+<div style="width: 390px; height: 844px; box-sizing: border-box; padding: 56px 28px 36px; display: flex; flex-direction: column; gap: 18px; background: repeating-radial-gradient(circle at 92% 6%, rgba(230,223,200,0.06) 0 1px, rgba(0,0,0,0) 1px 26px), repeating-radial-gradient(circle at 0% 100%, rgba(230,223,200,0.05) 0 1px, rgba(0,0,0,0) 1px 34px), linear-gradient(165deg, #2c3824 0%, #1c2118 55%, #33402a 100%); color: #e6dfc8; font-family: Inter, system-ui, sans-serif">
+<p style="margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: rgba(230,223,200,0.75)">Sun, Nov 15 · 6:10 – 7:35 PM</p><h1 style="margin: 0; font-family: 'Stardos Stencil', Impact, sans-serif; font-weight: 700; text-transform: uppercase; font-size: 32px; line-height: 1.05">Late dinner with the squad</h1><p style="margin: 0; font-family: 'Stardos Stencil', Impact, sans-serif; font-size: 22px; color: #d4b26a">“laughing”</p><p style="margin: 0; font-size: 15px; line-height: 1.5; color: rgba(230,223,200,0.88)">We couldn't stop laughing.</p><div aria-hidden="true" style="height: 150px; border-radius: 8px; background: rgba(230,223,200,0.10); display: flex; align-items: center; justify-content: center; font-size: 12px; color: rgba(230,223,200,0.7)">[PHOTO]</div><div style="display: flex; flex-direction: column; gap: 8px; padding: 16px; border-radius: 8px; background: rgba(230,223,200,0.08); text-decoration: none; color: inherit"><div style="display: flex; flex-direction: column; gap: 6px"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: rgba(230,223,200,0.85)">FELT LIKE</span><div style="display: flex; align-items: center; gap: 10px"><span style="height: 12px; width: 18%; border-radius: 2px; background: #d4b26a"></span><span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: rgba(230,223,200,0.85)">a blink</span></div></div><div style="display: flex; flex-direction: column; gap: 6px"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: rgba(230,223,200,0.85)">ACTUALLY</span><div style="display: flex; align-items: center; gap: 10px"><span style="height: 12px; width: 70%; border-radius: 2px; background: #d4b26a"></span><span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: rgba(230,223,200,0.85)">1 h 25 min</span></div></div></div><div style="margin-top: auto; display: flex; flex-direction: column; gap: 10px"><a href="UnitMoment.html" style="display: flex; align-items: center; justify-content: center; min-height: 54px; border-radius: 6px; background: #e6dfc8; color: #1f241a; font: 600 16px Inter, sans-serif; text-decoration: none">Compare with your unit</a><a href="Kept.html" style="display: flex; align-items: center; justify-content: center; min-height: 44px; border-radius: 6px; color: #e6dfc8; font: 500 15px Inter, sans-serif; text-decoration: none">Back to tonight</a></div>
+</div>
+</main>
+</div>
+<nav class="demo-nav" aria-label="Demo"><a href="index.html">Restart demo</a><a href="../index.html">About Kairos</a></nav>
+</body>
+</html>
